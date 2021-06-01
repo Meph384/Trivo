@@ -1,0 +1,113 @@
+//////////////////////////////////
+// LOGO
+.logo {
+    height: 3.25rem;
+    margin-left: 2rem; //offset logo
+}
+
+
+
+//////////////////////////////////
+// SEARCH
+.search {
+    flex: 0 0 40%; //width of search box 40% of header space
+
+    display: flex; //this
+    align-items: center; //this
+    justify-content: center; //and this allows to position and center search bar
+    &__input {
+        font-family: inherit; //need to specify this manually cuz it can't gather values automatically from _base file
+        font-size: inherit;
+        color: inherit;
+        background-color: var(--color-grey-light-2);
+        border: none;
+        padding: .7rem 2rem;
+        border-radius: 100px;
+        width: 90%;
+        transition: all .2s;
+        margin-right: -3.25rem; //overlap svg icon with input field
+
+        &:focus {
+            outline: none;
+            width: 100%;
+            background-color: var(--color-grey-light-3);
+        }
+
+        &::-webkit-input-placeholder {
+            font-weight: 100;
+            color: var(--color-grey-light-4);
+        }
+    }
+
+    &__button {
+        border: none;
+        background-color: transparent; //when bar changes color i won't need to bother with changing background color of svg element
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(2px); //simple animation of pressing button
+        }
+    }
+
+    &__icon {
+        height: 2rem;
+        width: 2rem;
+        fill: var(--color-grey-dark-3);
+    }
+}
+
+//////////////////////////////////
+// USER NAVIGATION
+.user-nav {
+    align-self: stretch; //this
+    display: flex; //this
+    align-items: center; //and this allows to position and center user-nav
+    
+
+    & > * {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    & > *:hover {
+        background-color: var(--color-grey-light-2);
+    }
+
+    &__icon-box {
+        position: relative; //need for absolute position of notifications
+    }
+
+    &__icon {
+        height: 2.25rem;
+        width: 2.25rem;
+        fill: var(--color-grey-dark-2);
+    }
+
+    &__notification {
+        font-size: .8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 50px;
+        background-color: var(--color-primary);
+        color: #fff;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.25rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center; //even without children we can use flex to center text inside of notifications
+    }
+
+    &__user-photo {
+        height: 3.75rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+}
