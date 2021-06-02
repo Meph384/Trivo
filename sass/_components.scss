@@ -111,3 +111,73 @@
         margin-right: 1rem;
     }
 }
+
+//////////////////////////////////
+// SIDE NAVIGATION
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    &__item {
+        position: relative; // needed for absolute positioning in ::before
+
+        &:not(:last-child) {
+            margin-bottom: .5rem; // adds space between each item of side-nav except last
+        }
+    }
+
+    &__item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color: var(--color-primary);
+        transform: scaleY(0); // expands bar in height
+        // transform-origin: bottom;  <- allows changing from where animation begins
+        transition: transform .2s,
+                    width .4s cubic-bezier(1,0,0,1) .2s, // expands bar in width fast at the start slow in the middle and fast at the end with a delay of .2s
+                    background-color .1s; // changes color after select
+    }
+    
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1); // expands in height on hover to full height
+        width: 100%; // expands in width on hover to full width
+    }
+
+    &__item:active::before {
+        background-color: var(--color-primary-light); // changes color on click to slightly lighter
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 3rem;
+        position: relative; // z-index only works on specified position
+        z-index: 10; // so the animation doesn't cover text and svg's
+
+        display: flex;
+        align-items: center; // align svg's with text
+    }
+
+    &__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 2rem;
+        fill: currentColor; // inherits color of a parent elemnt or of itself
+    }
+}
+
+//////////////////////////////////
+// LEGAL TEXT
+.legal {
+    font-size: 1.2rem;
+    color: var(--color-grey-light-4);
+    text-align: center;
+    padding: 2.5rem;
+}

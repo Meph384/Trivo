@@ -26,11 +26,15 @@
     background-color: var(--color-grey-dark-1);
     
     flex: 0 0 18%; // width of sidebar
+
+    display: flex;  //this
+    flex-direction: column; //this
+    justify-content: space-between; //and this allows to position sidebar ul and legal
 }
 
 .hotel-view {
     background-color: #fff;
     background-color: orangered;
-
+    height: 80rem;
     flex: 1; // occupy remaining 82% of content
 }
